@@ -112,7 +112,7 @@ public class ProductController {
     @Operation(summary = "This operation path delete a product of the database.")
     @ApiResponses(value = {
             @ApiResponse(
-                    responseCode = "200",
+                    responseCode = "204",
                     description = "Product data has been removed.",
                     content = {
                             @Content(mediaType = "application/json")
@@ -129,7 +129,7 @@ public class ProductController {
             @Parameter(description = "Id of product to be deleted.", example = "51")
             @PathVariable("id") int productId) {
         return productService.delete(productId) ?
-                new ResponseEntity<>(HttpStatus.OK) :
+                new ResponseEntity<>(HttpStatus.NO_CONTENT) :
                 new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }
